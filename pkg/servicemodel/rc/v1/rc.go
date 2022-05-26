@@ -455,7 +455,13 @@ func (c *Client) processReportAction(ctx context.Context, subscription *subutils
 	case *e2smrcies.RicEventTriggerFormats_EventTriggerFormat1:
 		// TODO Process RIC Event trigger definition IE style 1: Message Event
 	case *e2smrcies.RicEventTriggerFormats_EventTriggerFormat2:
-		// TODO Process RIC Event trigger definition IE style 2: Call Process Breakpoint
+		// Process RIC Event trigger definition IE style 2: Call Process Breakpoint
+		// Mobility management (Call Process Type ID=3); handover preparation ( Call Process Breakpoint ID = 1)
+		if eventTrigger.EventTriggerFormat2.RicCallProcessTypeId.Value == 3 {
+			if eventTrigger.EventTriggerFormat2.RicCallProcessBreakpointId.Value == 1 {
+
+			}
+		}
 	case *e2smrcies.RicEventTriggerFormats_EventTriggerFormat3:
 		// Process RIC Event trigger definition IE style 3: E2 Node Information Change
 		e2NodeInfoChangeList := eventTrigger.EventTriggerFormat3.GetE2NodeInfoChangeList()
